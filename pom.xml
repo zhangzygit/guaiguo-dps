@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>top.guaiguo</groupId>
-  <artifactId>spring-dps</artifactId>
+  <artifactId>guaiguo-dps</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>spring-dps</name>
+  <name>guaiguo-dps</name>
   <description>Demo project for Spring Boot</description>
 
   <parent>
