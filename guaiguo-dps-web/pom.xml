@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <groupId>top.guaiguo</groupId>
-    <artifactId>guaiguo-dps</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId> top.guaiguo.dps</groupId>
+	<artifactId>guaiguo-dps-web</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 
-  <artifactId>guaiguo-dps-web</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>guaiguo-dps-web</name>
-  <url>http://maven.apache.org</url>
+	<name>guaiguo-dps-web</name>
+	<description>Inventory Recommending for Chunbo</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>top.guaiguo</groupId>
-      <artifactId>guaiguo-dps-service</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
+	<parent>
+		<groupId> top.guaiguo.dps</groupId>
+		<artifactId>guaiguo-dps</artifactId>
+		<version>1.0.0</version>
+	</parent>
 
-  <build>
-    <finalName>guaiguo-dps-web</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>top.guaiguo</groupId>
+			<artifactId>guaiguo-dps-service</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
 </project>

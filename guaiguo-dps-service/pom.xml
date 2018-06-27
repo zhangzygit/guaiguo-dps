@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <groupId>top.guaiguo</groupId>
-    <artifactId>guaiguo-dps</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>top.guaiguo</groupId>
   <artifactId>guaiguo-dps-service</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>guaiguo-dps-service</name>
+  <description>Demo project for Spring Boot</description>
+
+  <parent>
+    <groupId> top.guaiguo.dps</groupId>
+    <artifactId>guaiguo-dps</artifactId>
+    <version>1.0.0</version>
+  </parent>
 
   <dependencies>
     <dependency>
-      <groupId>top.guaiguo</groupId>
+      <groupId>top.guaiguo.dps</groupId>
       <artifactId>guaiguo-dps-dao</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 </project>

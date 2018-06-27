@@ -1,4 +1,4 @@
-package top.guaiguo.daoconf;
+package top.guaiguo.springdps.daoconf;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import javax.sql.DataSource;
@@ -22,22 +22,22 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * @Datetime 2018-06-25 18:45
  */
 @Configuration
-@MapperScan(basePackages = MysqlReadConfig.BASEPACKAGES)
-public class MysqlReadConfig {
+@MapperScan(basePackages = MysqlMasterConfig.BASEPACKAGES,sqlSessionFactoryRef = "masterDruidSqlSessionFactory")
+public class MysqlMasterConfig {
 
     static final String MAPPER_LOCATIONS = "classpath:mappers/*.xml";
-    static final String BASEPACKAGES = "top.guaiguo.dao";
+    static final String BASEPACKAGES = "top.guaiguo.springdps.dao";
 
-    @Bean(name = "mysqlDruidDataSource")
+    @Bean(name = "masterDruidDataSource")
     @Primary
-    @ConfigurationProperties(prefix = "mysql.read")
+    @ConfigurationProperties(prefix = "master.mysql")
     public DataSource setDataSource(){
         return DruidDataSourceBuilder.create().build();
     }
 
-    @Bean(name = "mysqlDruidSqlSessionFactory")
+    @Bean(name = "masterDruidSqlSessionFactory")
     @Primary
-    public SqlSessionFactory setSqlSessionFactory(@Qualifier("mysqlDruidDataSource") DataSource mysqlDruidDataSource) throws Exception {
+    public SqlSessionFactory setSqlSessionFactory(@Qualifier("masterDruidDataSource") DataSource mysqlDruidDataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         Resource[] resources = new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATIONS);
         bean.setMapperLocations(resources);
@@ -45,9 +45,9 @@ public class MysqlReadConfig {
         return bean.getObject();
     }
 
-    @Bean("mysqlTransactionManager")
+    @Bean("masterTransactionManager")
     @Primary
-    public DataSourceTransactionManager setTransactionManager(@Qualifier("mysqlDruidDataSource") DataSource
+    public DataSourceTransactionManager setTransactionManager(@Qualifier("masterDruidDataSource") DataSource
             dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

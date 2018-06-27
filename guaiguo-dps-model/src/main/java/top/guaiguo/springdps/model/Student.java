@@ -1,4 +1,4 @@
-package top.guaiguo.model;
+package top.guaiguo.springdps.model;
 
 public class Student {
     private Long id;
