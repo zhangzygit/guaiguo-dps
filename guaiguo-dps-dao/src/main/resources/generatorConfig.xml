@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-<classPathEntry location="E:\repo\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar" />
+<classPathEntry location="E:\repo\org\postgresql\postgresql-42.2.2.jar" />
   <context id="default" targetRuntime="MyBatis3">
 
    <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
@@ -13,10 +13,10 @@
     </commentGenerator>
   
     <jdbcConnection
-        driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://127.0.0.1:3306/guaiguodpsdb?generateSimpleParameterMetadata=true"
-        userId="root"
-        password="root" >
+        driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://10.254.128.119:5432/chunbobiz"
+        userId="chunbobiz"
+        password="chunbobiz" >
         <property name="useInformationSchema" value="true"></property>
     </jdbcConnection>
             
@@ -27,24 +27,24 @@
     </javaTypeResolver> 
          
 <!-- generate Model -->
-    <javaModelGenerator targetPackage="top.guaiguo.springdps.model"
-                        targetProject="E:\chunbo\guaiguo-dps\guaiguo-dps-model">
+    <javaModelGenerator targetPackage="com.chunbo.cs.model.greenplum"
+                        targetProject="E:\chunbo\cs_trunk\chunbo-cs-model">
         <property name="enableSubPackages" value="true" />
         <property name="trimStrings" value="true" />
     </javaModelGenerator>
          
 <!-- generate xml -->
-    <sqlMapGenerator targetPackage="src\main\resources\mappers"
-                      targetProject="E:\chunbo\guaiguo-dps\guaiguo-dps-dao">
+    <sqlMapGenerator targetPackage="src\main\resources\mybatis-sqlmap\greenplum"
+                      targetProject="E:\chunbo\cs_trunk\chunbo-cs-dao">
         <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
          
 <!-- generate Mapper  -->
-    <javaClientGenerator type="XMLMAPPER"
+    <!--<javaClientGenerator type="XMLMAPPER"
                   targetPackage="top.guaiguo.springdps.dao"
                   targetProject="E:\chunbo\guaiguo-dps\guaiguo-dps-dao">
         <property name="enableSubPackages" value="true" />
-    </javaClientGenerator>
+    </javaClientGenerator>-->
 	
     <!--<table schema="wmsinvdb" tableName="purchase_recv_detail" mapperName=""
         enableCountByExample="false" enableUpdateByExample="false"
@@ -54,10 +54,23 @@
     </table>-->
 
      <!--指定数据库所有表-->
-		<table schema="" tableName="order_cancel_off_line"
+		<table schema="memberdb" tableName="member_info"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
     </table>
+
+    <table schema="memberdb" tableName="product_share"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+    </table>
+
+    <table schema="memberdb" tableName="product_share_reg"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+    </table>
+
   </context>
 </generatorConfiguration>
