@@ -14,7 +14,7 @@
   
     <jdbcConnection
         driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://frontrdb.uat.chunbo.com:3306/promotiondb"
+        connectionURL="jdbc:mysql://frontrdb.uat.chunbo.com:3306/catalogdb"
         userId="front"
         password="Dt@UDgGa" >
         <property name="useInformationSchema" value="true"></property>
@@ -58,15 +58,15 @@
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
-    </table>
+    </table>-->
 
-    <table schema="catalogdb" tableName="brand"
+    <table schema="catalogdb" tableName="price_print"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
-    </table>-->
+    </table>
 
-    <table schema="promotiondb" tableName="promotion"
+    <!--<table schema="promotiondb" tableName="promotion"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
@@ -76,7 +76,7 @@
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
-    </table>
+    </table>-->
 
   </context>
 </generatorConfiguration>

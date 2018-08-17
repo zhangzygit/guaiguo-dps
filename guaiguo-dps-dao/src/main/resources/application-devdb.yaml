@@ -1,0 +1,35 @@
+
+# 连接池
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      max-active: 50
+      initial-size: 10
+      min-idle: 10
+      max-wait: 15000
+      min-evictable-idle-time-millis: 180000
+      time-between-eviction-runs-millis: 60000
+      remove-abandoned: true
+      remove-abandoned-timeout: 600
+      log-abandoned: true
+      test-on-borrow: true
+      test-on-return: true
+      test-while-idle: true
+
+##数据源
+master:
+  mysql:
+    url: jdbc:mysql://127.0.0.1:3306/guaiguodpsdb?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+cluster:
+  mysql:
+    url: jdbc:mysql://127.0.0.1:3306/guaiguodpsdb?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+
+
+
+
+
