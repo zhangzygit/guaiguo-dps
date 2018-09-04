@@ -59,6 +59,11 @@
 			&lt;!&ndash;<scope>import</scope>&ndash;&gt;
 		</dependency>-->
 
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.11</version>
+		</dependency>
 
 	</dependencies>
 
