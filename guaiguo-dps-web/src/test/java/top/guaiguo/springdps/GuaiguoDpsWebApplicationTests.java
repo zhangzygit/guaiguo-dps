@@ -3,6 +3,8 @@ package top.guaiguo.springdps;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,20 @@ public class GuaiguoDpsWebApplicationTests {
         list.stream().forEach(System.out::print);
         String[] strings = {"1"};
         Stream<String> stream = Arrays.stream(strings);
+    }
+
+    @Test
+    public void TestAtomicInteger() throws InterruptedException {
+        AtomicInteger atomicInteger = new AtomicInteger();
+        CountDownLatch countDownLatch = new CountDownLatch(100);
+        for (int i = 0; i < 100; i++) {
+            new Thread(()->{
+                atomicInteger.incrementAndGet();
+                countDownLatch.countDown();
+            }).start();
+        }
+        countDownLatch.await();
+        System.out.println(atomicInteger.get());
     }
 
 }
