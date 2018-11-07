@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-<classPathEntry location="E:\repo\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar" />
+<!--<classPathEntry location="E:\repo\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar" />-->
+<classPathEntry location="E:\repo\postgresql\postgresql\9.1-901-1.jdbc4\postgresql-9.1-901-1.jdbc4.jar" />
   <context id="default" targetRuntime="MyBatis3">
 
    <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
@@ -13,10 +14,10 @@
     </commentGenerator>
   
     <jdbcConnection
-        driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://frontrdb.uat.chunbo.com:3306/catalogdb"
-        userId="front"
-        password="Dt@UDgGa" >
+        driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://10.254.128.119:5432/chunbobiz"
+        userId="chunbobiz"
+        password="chunbobiz" >
         <property name="useInformationSchema" value="true"></property>
     </jdbcConnection>
             
@@ -27,21 +28,21 @@
     </javaTypeResolver> 
          
 <!-- generate Model -->
-    <javaModelGenerator targetPackage="com.chunbo.front.model"
+    <javaModelGenerator targetPackage="com.chunbo.gp.model"
                         targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-model">
         <property name="enableSubPackages" value="true" />
         <property name="trimStrings" value="true" />
     </javaModelGenerator>
          
 <!-- generate xml -->
-    <sqlMapGenerator targetPackage="src\main\resources\front-mappers"
+    <sqlMapGenerator targetPackage="src\main\resources\gp-mappers"
                       targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-dao">
         <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
          
 <!-- generate Mapper  -->
     <javaClientGenerator type="XMLMAPPER"
-                  targetPackage="com.chunbo.front.dao"
+                  targetPackage="com.chunbo.gp.dao"
                   targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-dao">
         <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
@@ -60,7 +61,7 @@
         selectByExampleQueryId="false">
     </table>-->
 
-    <table schema="catalogdb" tableName="price_print"
+    <table schema="supplier_db" tableName="retail_catalog_detail"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
