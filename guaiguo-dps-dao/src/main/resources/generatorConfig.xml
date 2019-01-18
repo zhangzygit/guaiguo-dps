@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-<!--<classPathEntry location="E:\repo\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar" />-->
-<classPathEntry location="E:\repo\postgresql\postgresql\9.1-901-1.jdbc4\postgresql-9.1-901-1.jdbc4.jar" />
+<classPathEntry location="E:\repo\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar" />
+<!--<classPathEntry location="E:\repo\postgresql\postgresql\9.1-901-1.jdbc4\postgresql-9.1-901-1.jdbc4.jar" />-->
   <context id="default" targetRuntime="MyBatis3">
 
    <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
@@ -13,11 +13,12 @@
         <property name="suppressAllComments" value="true" />
     </commentGenerator>
   
+      <!--driverClass="org.postgresql.Driver"-->
     <jdbcConnection
-        driverClass="org.postgresql.Driver"
-        connectionURL="jdbc:postgresql://10.254.128.119:5432/chunbobiz"
-        userId="chunbobiz"
-        password="chunbobiz" >
+        driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://frontrdb.uat.chunbo.com:3306/catalogdb"
+        userId="front"
+        password="Dt@UDgGa" >
         <property name="useInformationSchema" value="true"></property>
     </jdbcConnection>
             
@@ -28,24 +29,24 @@
     </javaTypeResolver> 
          
 <!-- generate Model -->
-    <javaModelGenerator targetPackage="com.chunbo.gp.model"
+    <javaModelGenerator targetPackage="com.chunbo.rwms.inv.model"
                         targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-model">
         <property name="enableSubPackages" value="true" />
         <property name="trimStrings" value="true" />
     </javaModelGenerator>
          
 <!-- generate xml -->
-    <sqlMapGenerator targetPackage="src\main\resources\gp-mappers"
+    <sqlMapGenerator targetPackage="src\main\resources\front-mappers"
                       targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-dao">
         <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
          
 <!-- generate Mapper  -->
-    <javaClientGenerator type="XMLMAPPER"
-                  targetPackage="com.chunbo.gp.dao"
+    <!--<javaClientGenerator type="XMLMAPPER"
+                  targetPackage="com.chunbo.rwms.inv.dao"
                   targetProject="E:\chunbo\rwms-inv\chunbo-rwms-inv-dao">
         <property name="enableSubPackages" value="true" />
-    </javaClientGenerator>
+    </javaClientGenerator>-->
 	
     <!--<table schema="wmsinvdb" tableName="purchase_recv_detail" mapperName=""
         enableCountByExample="false" enableUpdateByExample="false"
@@ -61,7 +62,7 @@
         selectByExampleQueryId="false">
     </table>-->
 
-    <table schema="supplier_db" tableName="retail_catalog_detail"
+    <table schema="catalogdb" tableName="price_print"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
