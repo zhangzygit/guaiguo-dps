@@ -1,7 +1,9 @@
 package top.guaiguo.springdps.dao;
 
+import org.springframework.stereotype.Repository;
 import top.guaiguo.springdps.model.Student;
 
+@Repository
 public interface StudentMapper {
     int deleteByPrimaryKey(Long id);
 
