@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <h3>学生列表</h3>
+    <table  border='1' cellspacing='0' cellpadding='5' style='text-align:center'>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>出生年月</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="stu : ${studentList}">
+                <td th:text="${#strings.toUpperCase(stu.name)}"></td>
+                <td th:text="${stu.age}"></td>
+                <td th:text="${#dates.format(stu.birthday,'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

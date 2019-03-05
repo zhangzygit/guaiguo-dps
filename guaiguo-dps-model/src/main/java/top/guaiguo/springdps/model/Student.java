@@ -1,11 +1,15 @@
 package top.guaiguo.springdps.model;
 
+import java.util.Date;
+
 public class Student {
     private Long id;
 
     private String name;
 
     private Integer age;
+
+    private Date birthday;
 
     public Long getId() {
         return id;
@@ -29,5 +33,13 @@ public class Student {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

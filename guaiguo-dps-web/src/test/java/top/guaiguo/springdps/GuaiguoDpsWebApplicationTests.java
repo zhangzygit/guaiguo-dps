@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 import org.junit.Test;
@@ -49,7 +48,7 @@ public class GuaiguoDpsWebApplicationTests {
 
     @Test
     public void testRedis() {
-        redisTemplate.opsForValue().set("123", "456", 300, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set("123", "456");
         String s = redisTemplate.opsForValue().get("123");
         System.out.println(s);
     }
