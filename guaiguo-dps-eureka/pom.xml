@@ -8,43 +8,36 @@
     <version>2.0.3.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>guaiguo.top</groupId>
-  <artifactId>guaiguo-dps-config</artifactId>
+  <groupId>top.guaiguo</groupId>
+  <artifactId>guaiguo-dps-eureka</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>guaiguo-dps-config</name>
+  <name>guaiguo-dps-eureka</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
     <java.version>1.8</java.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-    <!--<dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server
+     boot2.X 替代spring-cloud-starter-eureka-server-->
+    <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
       <version>2.0.3.RELEASE</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>-->
-
-    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-server -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-config-server</artifactId>
-      <version>2.0.3.RELEASE</version>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-      <version>2.0.3.RELEASE</version>
-    </dependency>
-
   </dependencies>
 
   <build>

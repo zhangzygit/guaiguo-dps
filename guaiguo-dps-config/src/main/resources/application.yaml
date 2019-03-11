@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: guaiguo-dps-config
   cloud:
     config:
       server:
@@ -8,3 +10,11 @@ spring:
           #私有地址需要配置用户名。密码
 server:
   port: 8888
+
+#采用默认配置 EurekaClientConfigBean.DEFAULT_URL
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

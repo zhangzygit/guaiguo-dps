@@ -11,6 +11,8 @@ spring:
     cache: false
     servlet:
       content-type: text/html
+  application:
+    name: guaiguo-dps-web
 
 server:
   port: 80
@@ -19,3 +21,5 @@ server:
 debug: true
 test-sprig-cloud-config-url:
   211111111111111111
+
+
