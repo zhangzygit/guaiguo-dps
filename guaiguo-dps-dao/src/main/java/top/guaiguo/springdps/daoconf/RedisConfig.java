@@ -35,9 +35,9 @@ public class RedisConfig {
 
 
     @Bean
-    public RedisTemplate<?, ?> redisTemplate(JedisConnectionFactory connectionFactory) {
+    public RedisTemplate<?, ?> redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
         RedisTemplate<?, ?> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(connectionFactory);
+        redisTemplate.setConnectionFactory(jedisConnectionFactory);
 
         // 使用Jackson2JsonRedisSerialize 替换默认序列化
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);

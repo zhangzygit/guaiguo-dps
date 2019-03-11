@@ -3,4 +3,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/zhangzygit/cloud-repository.git
+          uri: https://github.com/zhangzygit/cloud-repository
+          search-paths: spring-cloud-config
+          #私有地址需要配置用户名。密码
+server:
+  port: 8888

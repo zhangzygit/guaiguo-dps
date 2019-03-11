@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,12 +21,16 @@ import top.guaiguo.springdps.model.Student;
  */
 @Controller
 @RequestMapping("/base")
+@RefreshScope
 public class BaseController {
 
     private ThreadLocal<Object> ss = new ThreadLocal<>();
 
     @Autowired
     private StudentService studentService;
+
+    @Value("${test-sprig-cloud-config-url}")
+    private String url;
 
     @RequestMapping("/index")
     @ResponseBody
@@ -47,4 +53,11 @@ public class BaseController {
         request.setAttribute("studentList", list);
         return "hello";
     }
+
+    @RequestMapping("/testCloudConfig")
+    @ResponseBody
+    public String testCloudConfig() {
+        return url;
+    }
+
 }

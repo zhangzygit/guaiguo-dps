@@ -1,5 +1,6 @@
 package top.guaiguo.springdps.impl;
 
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,15 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
-    @Autowired
-    private StringRedisTemplate redisTemplate;
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public void addStudent() {
         Student student = new Student();
         student.setAge(28);
         student.setName("zhangzhaoyuan");
-        redisTemplate.opsForValue().set("1", "2");
+        stringRedisTemplate.opsForValue().set("1", "2");
         studentMapper.insertSelective(student);
     }
 }
