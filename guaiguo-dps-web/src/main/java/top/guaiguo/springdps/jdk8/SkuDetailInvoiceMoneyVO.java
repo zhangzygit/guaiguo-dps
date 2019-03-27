@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,7 +12,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -131,10 +134,12 @@ public class SkuDetailInvoiceMoneyVO {
         Collections.sort(list, new Comparator<SkuDetailInvoiceMoneyVO>() {
             @Override
             public int compare(SkuDetailInvoiceMoneyVO o1, SkuDetailInvoiceMoneyVO o2) {
-                return 0;
+                return o1.getSkuId().compareTo(o2.getSkuId());
             }
         });
 
+        Function<SkuDetailInvoiceMoneyVO, Long> getSkuId = SkuDetailInvoiceMoneyVO::getSkuId;
+        Collector<Object, ?, List<Object>> objectListCollector = Collectors.toList();
 
         List<Long> ha = list.parallelStream()
                 .filter(t -> t.getSkuName().equals("ha"))
@@ -195,7 +200,9 @@ public class SkuDetailInvoiceMoneyVO {
         LocalDateTime now1 = LocalDateTime.now();
         System.out.println(now);
 
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern ("yyyy-MM-dd HH:mm:ss");
+        String format = dateTimeFormatter.format(now1);
 
-
+        System.out.println(format);
     }
 }
