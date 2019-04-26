@@ -1,0 +1,20 @@
+dubbo:
+  application:
+    name: guaiguo-dps-web
+    owner: guaiguo
+    organization: guaiguo
+    logger: log4j
+  registry:
+    protocol: zookeeper
+    address: zookeeper://10.254.128.130:2181
+    timeout: 1000
+  protocol:
+    name: dubbo
+    port: 8080
+    threads: 10
+    serialization: kryo
+  consumer:
+    check: false
+    timeout: 1000
+  monitor:
+    protocol: registry
