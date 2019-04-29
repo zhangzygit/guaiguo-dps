@@ -128,6 +128,11 @@ public class SkuDetailInvoiceMoneyVO {
         list.add(vo);
         list.add(v1o);
 
+        //按照SKUID升序，名称倒叙排列
+        List<SkuDetailInvoiceMoneyVO> collect = list.stream()
+                .sorted(Comparator.comparing(SkuDetailInvoiceMoneyVO::getSkuId).thenComparing(SkuDetailInvoiceMoneyVO
+                        ::getSkuName).reversed()).collect(Collectors.toList());
+
         Comparator<SkuDetailInvoiceMoneyVO> comparing = Comparator.comparing(SkuDetailInvoiceMoneyVO::getSkuId);
         comparing.reversed();
 
@@ -147,7 +152,6 @@ public class SkuDetailInvoiceMoneyVO {
                 .map(SkuDetailInvoiceMoneyVO::getSkuId)
                 .collect(Collectors.toList());
         System.out.println(ha.toString());
-
         List<Integer> nums = Arrays.asList(1, 2, 3, 4);
         nums.stream()
                 .map(n -> n * n)
@@ -168,7 +172,7 @@ public class SkuDetailInvoiceMoneyVO {
         String[] strings = Stream.of("one", "two", "three", "four")
                 .filter(str -> str.length() > 3)
                 .peek(System.out::println)
-                .map(ss -> ss.toUpperCase())
+                .map(String::toUpperCase)
                 .peek(System.out::println)
                 .toArray(String[]::new);
 
@@ -200,7 +204,7 @@ public class SkuDetailInvoiceMoneyVO {
         LocalDateTime now1 = LocalDateTime.now();
         System.out.println(now);
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern ("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String format = dateTimeFormatter.format(now1);
 
         System.out.println(format);
