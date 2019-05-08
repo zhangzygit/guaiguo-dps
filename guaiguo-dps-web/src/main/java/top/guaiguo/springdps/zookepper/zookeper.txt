@@ -1,0 +1,67 @@
+/locks/test1_lock_0000000000 已经创建
+Thread-9 的锁是 /locks/test1_lock_0000000000
+Thread-9 test1获得了锁
+499
+Thread-9正在运行
+释放锁 /locks/test1_lock_0000000000
+/locks/test1_lock_0000000001 已经创建
+/locks/test1_lock_0000000002 已经创建
+/locks/test1_lock_0000000004 已经创建
+/locks/test1_lock_0000000008 已经创建
+/locks/test1_lock_0000000006 已经创建
+/locks/test1_lock_0000000007 已经创建
+/locks/test1_lock_0000000005 已经创建
+/locks/test1_lock_0000000003 已经创建
+/locks/test1_lock_0000000009 已经创建
+Thread-5 的锁是 /locks/test1_lock_0000000001
+Thread-4 的锁是 /locks/test1_lock_0000000004
+Thread-2 的锁是 /locks/test1_lock_0000000008
+Thread-3 的锁是 /locks/test1_lock_0000000002
+Thread-0 的锁是 /locks/test1_lock_0000000006
+Thread-7 的锁是 /locks/test1_lock_0000000005
+Thread-1 的锁是 /locks/test1_lock_0000000007
+Thread-8 的锁是 /locks/test1_lock_0000000009
+Thread-6 的锁是 /locks/test1_lock_0000000003
+Thread-4等待锁 /locks/test1_lock_0000000003
+Thread-8等待锁 /locks/test1_lock_0000000008
+Thread-2等待锁 /locks/test1_lock_0000000007
+Thread-1等待锁 /locks/test1_lock_0000000006
+Thread-0等待锁 /locks/test1_lock_0000000005
+Thread-7等待锁 /locks/test1_lock_0000000004
+Thread-3等待锁 /locks/test1_lock_0000000001
+498
+Thread-5正在运行
+释放锁 /locks/test1_lock_0000000001
+Thread-6等待锁 /locks/test1_lock_0000000002
+Thread-3 等到了锁
+497
+Thread-3正在运行
+释放锁 /locks/test1_lock_0000000002
+Thread-6 等到了锁
+496
+Thread-6正在运行
+释放锁 /locks/test1_lock_0000000003
+Thread-4 等到了锁
+495
+Thread-4正在运行
+释放锁 /locks/test1_lock_0000000004
+Thread-7 等到了锁
+494
+Thread-7正在运行
+释放锁 /locks/test1_lock_0000000005
+Thread-0 等到了锁
+493
+Thread-0正在运行
+释放锁 /locks/test1_lock_0000000006
+Thread-1 等到了锁
+492
+Thread-1正在运行
+释放锁 /locks/test1_lock_0000000007
+Thread-2 等到了锁
+491
+Thread-2正在运行
+释放锁 /locks/test1_lock_0000000008
+Thread-8 等到了锁
+490
+Thread-8正在运行
+释放锁 /locks/test1_lock_0000000009
