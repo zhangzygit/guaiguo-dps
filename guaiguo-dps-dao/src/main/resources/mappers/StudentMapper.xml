@@ -5,9 +5,10 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, age
+    id, name, age,version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -62,8 +63,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="top.guaiguo.springdps.model.Student">
     update student
-    set name = #{name,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER}
-    where id = #{id,jdbcType=BIGINT}
+    set
+      age = age - 1 , version = version + 1
+    where id = #{id,jdbcType=BIGINT} and version = #{version,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -10,4 +10,6 @@ package top.guaiguo.springdps;
 public interface StudentService {
 
     void addStudent();
+
+    void updateAge(Long stuId);
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.guaiguo.springdps.model.Student;
@@ -29,6 +30,7 @@ public class BaseController {
     @Autowired
     private StudentService studentService;
 
+    //http://localhost:8888/guaiguo-dps-web/pro/master
     @Value("${test-sprig-cloud-config-url}")
     private String url;
 
@@ -36,6 +38,13 @@ public class BaseController {
     @ResponseBody
     public String index() {
         studentService.addStudent();
+        return "success";
+    }
+
+    @RequestMapping("/update/{stuId}")
+    @ResponseBody
+    public String updateAge(@PathVariable("stuId") Long stuId) {
+        studentService.updateAge(stuId);
         return "success";
     }
 

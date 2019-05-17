@@ -8,6 +8,7 @@ public class Student {
     private String name;
 
     private Integer age;
+    private Integer version;
 
     private Date birthday;
 
@@ -41,5 +42,13 @@ public class Student {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
