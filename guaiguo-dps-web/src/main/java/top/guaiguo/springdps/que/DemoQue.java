@@ -1,5 +1,6 @@
 package top.guaiguo.springdps.que;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -29,9 +30,13 @@ public class DemoQue {
         Pet poll = dogQue.poll();
         dogQue.isEmpty();
 
-        int[] array = {1, 9};
+        int[] array = {1, 2, 56, 7, 9, 0, 12, 436, 9};
         int search = search(array, 9, 0, array.length - 1);
         System.out.println(search);
+
+//        maopao(array);
+        xuanze(array);
+        System.out.println(Arrays.toString(array));
 
     }
 
@@ -50,6 +55,32 @@ public class DemoQue {
         } else {
             e = m;
             return search(array, num, s, e);
+        }
+    }
+
+    static void maopao(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+    }
+
+    static void xuanze(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            System.out.println(Arrays.toString(array));
         }
     }
 
