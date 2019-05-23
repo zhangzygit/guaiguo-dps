@@ -1,7 +1,10 @@
 package top.guaiguo.springdps.jdk8;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created with IntelliJ IDEA Ultimate.
@@ -25,6 +28,27 @@ public class TestHand {
         List array = new ArrayList<>();
         array.add(1);
         array.add(2);
+
+        Map<String, Integer> map = new LinkedHashMap<String, Integer>();
+        map.put("4",1);
+        map.put("2",1);
+        map.put("3",1);
+        map.put("1",1);
+        System.out.println(map);
+
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        myLinkedList.addLast(1);
+        myLinkedList.addLast(2);
+        myLinkedList.addLast(3);
+
+        TreeMap<String, Integer> stringIntegerTreeMap = new TreeMap<>();
+        stringIntegerTreeMap.put("4",1);
+        stringIntegerTreeMap.put("2",1);
+        stringIntegerTreeMap.put("3",1);
+        stringIntegerTreeMap.put("1",1);
+        System.out.println(stringIntegerTreeMap.toString());
+
+
     }
 
     private static String toHex(int num) {
@@ -39,7 +63,6 @@ public class TestHand {
         }
         return sb.reverse().toString();
     }
-
 
 
 }

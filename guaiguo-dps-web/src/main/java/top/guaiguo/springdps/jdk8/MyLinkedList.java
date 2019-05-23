@@ -1,5 +1,6 @@
 package top.guaiguo.springdps.jdk8;
 
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.concurrent.CountDownLatch;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class MyLinkedList<E> {
 
+    public static final HashMap<Integer, Integer> INTEGER_INTEGER_HASH_MAP = new HashMap<>();
     private Node<E> first;
     private Node<E> last;
     private int size;
@@ -61,7 +63,7 @@ public class MyLinkedList<E> {
 
     public E get(int index) {
         Node<E> x = first;
-        if (index < (size << 2)) {
+        if (index < (size >> 1)) {
             for (int i = 0; i < index; i++) {
                 x = x.next;
             }
@@ -75,7 +77,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    class Node<E> {
+    private static class Node<E> {
 
         E item;
         Node<E> prev;
@@ -103,7 +105,8 @@ public class MyLinkedList<E> {
         }
 
         countDownLatch.await();
-        System.out.println(myLinkedList);
+        System.out.println(myLinkedList.get(1));
     }
+
 }
 
