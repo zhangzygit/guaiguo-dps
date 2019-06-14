@@ -28,10 +28,12 @@ public class TestLinked {
         Node<Integer> fourth = new Node<Integer>(4, null, null);
         Node<Integer> secod = new Node<Integer>(2, null, null);
         Node<Integer> first = new Node<Integer>(1, null, null);
+        Node<Integer> fifth = new Node<Integer>(5, null, null);
 
         first.next = secod;
         secod.next = third;
         third.next = fourth;
+        fourth.next = fifth;
 
         Node e = first;
         Node<Integer> reverse = new Node<Integer>((Integer) e.e, e.next, null);
