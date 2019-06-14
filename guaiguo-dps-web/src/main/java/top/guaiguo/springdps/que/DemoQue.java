@@ -1,5 +1,6 @@
 package top.guaiguo.springdps.que;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -31,12 +32,20 @@ public class DemoQue {
         dogQue.isEmpty();
 
         int[] array = {1, 2, 56, 7, 9, 0, 12, 436, 9};
-        int search = search(array, 9, 0, array.length - 1);
+        int search = search(array, 9999, 0, array.length - 1);
         System.out.println(search);
 
 //        maopao(array);
         xuanze(array);
         System.out.println(Arrays.toString(array));
+
+        System.out.println(3<<1);
+        System.out.println(3<<2);
+        System.out.println(3<<3);
+        ArrayList<Integer> objects = new ArrayList<>(2);
+        objects.add(1);
+        objects.add(2);
+        objects.add(3);
 
     }
 
@@ -47,6 +56,10 @@ public class DemoQue {
 
         if (array[m] == num) {
             return m;
+        }
+
+        if (s == e) {
+            return -1;
         }
 
         if (array[m] < num) {
