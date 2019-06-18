@@ -20,37 +20,72 @@ public class TestLinked {
             this.prev = prev;
             this.next = next;
         }
+
     }
 
 
     public static void main(String[] args) {
-        Node<Integer> third = new Node<Integer>(3, null, null);
-        Node<Integer> fourth = new Node<Integer>(4, null, null);
-        Node<Integer> secod = new Node<Integer>(2, null, null);
-        Node<Integer> first = new Node<Integer>(1, null, null);
-        Node<Integer> fifth = new Node<Integer>(5, null, null);
+        Node<Integer> first = createNode(4);
+        printNext(first);
+        printNext(reverseNode(first));
+    }
 
-        first.next = secod;
-        secod.next = third;
-        third.next = fourth;
-        fourth.next = fifth;
+    private static Node<Integer> createNode(int i) {
+        Node<Integer> first = null;
+        Node<Integer> newNode = null;
+        Node e = null;
+        for (int j = 1; j <= i; j++) {
+            newNode = new Node<Integer>(j, null, null);
+            if (first == null) {
+                first = newNode;
+                e = first;
+                continue;
+            }
 
-        Node e = first;
-        Node<Integer> reverse = new Node<Integer>((Integer) e.e, e.next, null);
-        Node<Integer> reverse2 = reverse.prev;
-        do {
-            System.out.println(e.e);
-            reverse2.prev = reverse2.next;
-            reverse2.next = null;
-            reverse2 = reverse2.prev;
-        } while ((e = e.next) != null);
+            for (; ; e = e.next) {
+                if (e.next == null) {
+                    e.next = newNode;
+                    break;
+                }
+            }
+        }
 
-        System.out.println("------------------>");
-        e = reverse;
+        return first;
+    }
+
+    /**
+     * 1 -> 2 -> 3 -> 4
+     * return  4 -> 3 -> 2 -> 1
+     * return  4 <- 3 <- 2 <- 1
+     *
+     * @param head
+     * @return
+     */
+    private static Node reverseNode(Node<Integer> head) {
+        // head看作是前一结点，head.getNext()是当前结点，reHead是反转后新链表的头结点
+        Node<Integer> next = head.next;
+        if (next == null) {
+            return head;
+        }
+
+        Node reHead = reverseNode(next);
+        next.next = head;
+        head.next = null;
+        return reHead;
+    }
+
+    private static void printPrev(Node<Integer> e) {
+        System.out.println("-----printPrev------------");
         do {
             System.out.println(e.e);
         } while ((e = e.prev) != null);
+    }
 
+    private static void printNext(Node<Integer> e) {
+        System.out.println("-----printNext------------");
+        do {
+            System.out.println(e.e);
+        } while ((e = e.next) != null);
     }
 
 }
