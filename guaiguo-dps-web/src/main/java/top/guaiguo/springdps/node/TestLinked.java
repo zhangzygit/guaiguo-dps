@@ -27,7 +27,49 @@ public class TestLinked {
     public static void main(String[] args) {
         Node<Integer> first = createNode(4);
         printNext(first);
-        printNext(reverseNode(first));
+        //printNext(reverseNodeNext(first));
+        Node<Integer> integerNode = reverseNodePrev(first);
+        printPrev(integerNode);
+    }
+
+    /**
+     * 1 -> 2 -> 3 -> 4
+     * return  4 <- 3 <- 2 <- 1
+     *
+     * @param head
+     * @return
+     */
+    private static Node<Integer> reverseNodePrev(Node<Integer> head) {
+        // head看作是前一结点，head.getNext()是当前结点，reHead是反转后新链表的头结点
+        Node<Integer> next = head.next;
+        if (next == null) {
+            return head;
+        }
+
+        Node reHead = reverseNodePrev(next);
+        head.prev = reHead;
+        head.next = null;
+        return head;
+    }
+
+    /**
+     * 1 -> 2 -> 3 -> 4
+     * return  4 -> 3 -> 2 -> 1
+     *
+     * @param head
+     * @return
+     */
+    private static Node reverseNodeNext(Node<Integer> head) {
+        // head看作是前一结点，head.getNext()是当前结点，reHead是反转后新链表的头结点
+        Node<Integer> next = head.next;
+        if (next == null) {
+            return head;
+        }
+
+        Node reHead = reverseNodeNext(next);
+        next.next = head;
+        head.next = null;
+        return reHead;
     }
 
     private static Node<Integer> createNode(int i) {
@@ -51,27 +93,6 @@ public class TestLinked {
         }
 
         return first;
-    }
-
-    /**
-     * 1 -> 2 -> 3 -> 4
-     * return  4 -> 3 -> 2 -> 1
-     * return  4 <- 3 <- 2 <- 1
-     *
-     * @param head
-     * @return
-     */
-    private static Node reverseNode(Node<Integer> head) {
-        // head看作是前一结点，head.getNext()是当前结点，reHead是反转后新链表的头结点
-        Node<Integer> next = head.next;
-        if (next == null) {
-            return head;
-        }
-
-        Node reHead = reverseNode(next);
-        next.next = head;
-        head.next = null;
-        return reHead;
     }
 
     private static void printPrev(Node<Integer> e) {
