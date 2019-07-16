@@ -30,15 +30,9 @@ public class Singleton {
         return sin;
     }
 
-    static Integer executeNum = 0;
-
-    public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-            new Thread(Singleton::getInstance).start();
-        }
-
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        PrintBean printBean = new PrintBean(0, 1);
+        PrintBean printBean = new PrintBean(0, 2);
         ThreadNum threadNum = new ThreadNum(printBean);
         ThreadLetter threadLetter = new ThreadLetter(printBean);
         executorService.execute(threadNum);
@@ -60,6 +54,7 @@ public class Singleton {
             for (int i = 1; i < 27; i++) {
                 try {
                     System.out.println(i);
+                    Thread.sleep((int) (100 + Math.random() * 1000));
                     printBean.printNum();
                     printBean.waitForLetter();
                 } catch (InterruptedException e) {
@@ -83,6 +78,7 @@ public class Singleton {
                 try {
                     printBean.waitForNum();
                     System.out.println(i);
+                    Thread.sleep((int) (50 + Math.random() * 1000));
                     printBean.printLetter();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -103,21 +99,22 @@ public class Singleton {
         }
 
 
-        public synchronized void printNum() {
+        public synchronized void printNum() throws InterruptedException {
             executeNum++;
-            if(executeNum == systemNum){
+            if (executeNum == systemNum) {
                 notifyAll();
             }
         }
 
-        public synchronized void printLetter() {
+        public synchronized void printLetter() throws InterruptedException {
             executeNum--;
-            if(executeNum == 0){
+            if (executeNum == 0) {
                 notifyAll();
             }
         }
 
         public synchronized void waitForNum() throws InterruptedException {
+            //不能只是用if判断一次，会出现不同步的问题
             while (executeNum == 0) {
                 wait();
             }
