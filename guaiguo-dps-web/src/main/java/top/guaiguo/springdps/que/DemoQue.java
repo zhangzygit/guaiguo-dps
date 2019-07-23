@@ -49,7 +49,7 @@ public class DemoQue {
 
     }
 
-    static int search(int[] array, int num, int start, int end) {
+    private static int search(int[] array, int num, int start, int end) {
         int s = start;
         int e = end;
         int m = (s + e) / 2;
@@ -71,7 +71,7 @@ public class DemoQue {
         }
     }
 
-    static void maopao(int[] array) {
+    private static void maopao(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
@@ -84,7 +84,7 @@ public class DemoQue {
 
     }
 
-    static void xuanze(int[] array) {
+    private static void xuanze(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (array[i] > array[j]) {
@@ -97,17 +97,16 @@ public class DemoQue {
         }
     }
 
+    private static class Pet {
 
-}
+    }
 
-class Pet {
+    private static class Cat extends Pet {
 
-}
+    }
 
-class Cat extends Pet {
+    private static class Dog extends Pet {
 
-}
-
-class Dog extends Pet {
+    }
 
 }

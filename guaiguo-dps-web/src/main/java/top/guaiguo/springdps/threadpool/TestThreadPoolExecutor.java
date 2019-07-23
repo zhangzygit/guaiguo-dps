@@ -44,9 +44,8 @@ public class TestThreadPoolExecutor {
             new SynchronousQueue<>()/*, new CallerRunsPolicy()*/);
 
     public static void main(String[] args) throws InterruptedException {
-//        testLink();
-        testSync();
-
+        testLink();
+//        testSync();
     }
 
     public static void testSync() throws InterruptedException {
@@ -70,6 +69,8 @@ public class TestThreadPoolExecutor {
         System.out.println("核心线程数" + executorSync.getCorePoolSize());
         System.out.println("线程池数" + executorSync.getPoolSize());
         System.out.println("队列任务数" + executorSync.getQueue().size());
+
+        executorSync.shutdown();
     }
 
     public static void testLink() throws InterruptedException {
@@ -93,18 +94,22 @@ public class TestThreadPoolExecutor {
         System.out.println("核心线程数" + executorLink.getCorePoolSize());
         System.out.println("线程池数" + executorLink.getPoolSize());
         System.out.println("队列任务数" + executorLink.getQueue().size());
+
+        executorLink.shutdown();
     }
-}
 
-class MyRunable implements Runnable {
+    static class MyRunable implements Runnable {
 
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(2000);
-            System.out.println(Thread.currentThread().getName() + " run");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(2000);
+                System.out.println(Thread.currentThread().getName() + " run");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
+
+

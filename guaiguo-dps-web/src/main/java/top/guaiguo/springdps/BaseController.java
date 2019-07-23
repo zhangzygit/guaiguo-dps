@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,14 +35,14 @@ public class BaseController {
     @Value("${test-sprig-cloud-config-url}")
     private String url;
 
-    @RequestMapping("/index")
+    @GetMapping("/index")
     @ResponseBody
     public String index() {
         studentService.addStudent();
         return "success";
     }
 
-    @RequestMapping("/update/{stuId}")
+    @GetMapping("/update/{stuId}")
     @ResponseBody
     public String updateAge(@PathVariable("stuId") Long stuId) {
         studentService.updateAge(stuId);
@@ -49,7 +50,7 @@ public class BaseController {
     }
 
 
-    @RequestMapping("/testThymeleaf")
+    @GetMapping("/testThymeleaf")
     public String testThymeleaf(HttpServletRequest request) {
         List<Student> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -63,7 +64,7 @@ public class BaseController {
         return "hello";
     }
 
-    @RequestMapping("/testCloudConfig")
+    @GetMapping("/testCloudConfig")
     @ResponseBody
     public String testCloudConfig() {
         return url;
