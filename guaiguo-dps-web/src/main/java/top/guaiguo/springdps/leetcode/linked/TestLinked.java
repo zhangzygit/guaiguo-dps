@@ -1,4 +1,4 @@
-package top.guaiguo.springdps.node;
+package top.guaiguo.springdps.leetcode.linked;
 
 /**
  * Created with IntelliJ IDEA Ultimate.
