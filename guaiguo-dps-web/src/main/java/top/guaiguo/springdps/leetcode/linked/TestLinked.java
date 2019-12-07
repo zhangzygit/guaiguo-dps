@@ -27,9 +27,8 @@ public class TestLinked {
     public static void main(String[] args) {
         Node<Integer> first = createNode(4);
         printNext(first);
-        //printNext(reverseNodeNext(first));
-        Node<Integer> integerNode = reverseNodePrev(first);
-        printPrev(integerNode);
+//        printNext(reverseNodeNext(first));
+        printPrev(reverseNodePrev(first));
     }
 
     /**
