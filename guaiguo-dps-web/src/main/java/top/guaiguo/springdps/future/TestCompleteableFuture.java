@@ -1,8 +1,6 @@
 package top.guaiguo.springdps.future;
 
 import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
@@ -10,12 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TestCompleteableFuture {
 
@@ -46,26 +42,31 @@ public class TestCompleteableFuture {
     @SneakyThrows
     public void thenRun() {
         CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            sleep(2);
             return "hello";
         }).thenRun(() -> System.out.println("hello world"));
-        sleep(5);
+        sleep(3);
     }
 
     @Test
     public void thenCombine() {
+        System.out.println(Thread.currentThread().getName());
+        System.out.println(executorService.getPoolSize());
         ArrayList<String> join = CompletableFuture.supplyAsync(() -> {
             sleep(2);
+            System.out.println(executorService.getPoolSize());
+            System.out.println(Thread.currentThread().getName());
             return "hello ";
-        }).thenCombine(CompletableFuture.supplyAsync(() -> {
+        }, executorService).thenCombineAsync(CompletableFuture.supplyAsync(() -> {
             sleep(3);
+            System.out.println(executorService.getPoolSize());
+            System.out.println(Thread.currentThread().getName());
             return "world";
-        }), (s, v) -> Lists.newArrayList(s, v)).join();
-        System.out.println(1);
+        }, executorService), (s, v) -> {
+            System.out.println(executorService.getPoolSize());
+            System.out.println(Thread.currentThread().getName());
+            return Lists.newArrayList(s, v);
+        }, executorService).join();
         System.out.println(join);
     }
 
@@ -98,7 +99,7 @@ public class TestCompleteableFuture {
         Integer join = CompletableFuture.supplyAsync(() -> {
             sleep(1);
             return 1;
-        }).applyToEither(CompletableFuture.supplyAsync(() -> {
+        }).applyToEitherAsync(CompletableFuture.supplyAsync(() -> {
             sleep(2);
             return 2;
         }), s -> s).join();
@@ -139,9 +140,14 @@ public class TestCompleteableFuture {
         }).whenComplete((s, t) -> {
             System.out.println(s);
             System.out.println(t.getMessage());
-        }).exceptionally(e -> {
-            System.out.println(e.getMessage());
-            return "hello world";
+        }).exceptionally(s -> {
+            System.out.println(s.getMessage());
+            return "excep";
+        }).handle((s, t) -> {
+            if (t != null) {
+                return "handle";
+            }
+            return s;
         }).join();
         System.out.println(result);
     }
@@ -196,7 +202,35 @@ public class TestCompleteableFuture {
     }
 
     @Test
-    public void testFUtures() {
+    public void testAllOf() {
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+            sleep(new Random().nextInt(4));
+            return 1;
+        });
+        CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> {
+            sleep(new Random().nextInt(4));
+            return 2;
+        });
+        CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
+            sleep(new Random().nextInt(4));
+            return null;
+        });
+        CompletableFuture<Integer> future3 = CompletableFuture.supplyAsync(() -> {
+            sleep(new Random().nextInt(4));
+            return 4;
+        });
+
+        List<CompletableFuture<Integer>> futures = Lists.newArrayList(future, future1, future2, future3);
+        List<Integer> join = sequence(futures)
+                .handle((s, t) -> {
+                    if (t != null) {
+                        System.out.println(t.getMessage());
+                        return null;
+                    }
+                    return s;
+                }).join();
+        System.out.println(join);
+
 
     }
 
