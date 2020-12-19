@@ -1,4 +1,4 @@
-package top.guaiguo.springdps.dubbo;
+package top.guaiguo.springdps.service.dubbo;
 
 /**
  * Created with IntelliJ IDEA Ultimate.

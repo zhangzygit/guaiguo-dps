@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.guaiguo.springdps.model.Student;
+import top.guaiguo.springdps.service.StudentService;
 
 /**
  * Created with IntelliJ IDEA Ultimate.

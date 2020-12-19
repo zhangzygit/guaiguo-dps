@@ -1,7 +1,7 @@
-package top.guaiguo.springdps.dubbo.impl;
+package top.guaiguo.springdps.service.dubbo.impl;
 
 import org.springframework.stereotype.Service;
-import top.guaiguo.springdps.dubbo.DubboService;
+import top.guaiguo.springdps.service.dubbo.DubboService;
 
 /**
  * Created with IntelliJ IDEA Ultimate.

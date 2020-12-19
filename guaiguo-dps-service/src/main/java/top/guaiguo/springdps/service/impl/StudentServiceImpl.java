@@ -1,12 +1,13 @@
-package top.guaiguo.springdps.impl;
+package top.guaiguo.springdps.service.impl;
 
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import top.guaiguo.springdps.StudentService;
+import top.guaiguo.springdps.service.StudentService;
 import top.guaiguo.springdps.dao.StudentMapper;
 import top.guaiguo.springdps.model.Student;
 

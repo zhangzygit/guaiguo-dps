@@ -1,7 +1,6 @@
-package top.guaiguo.springdps.daoconf;
+package top.guaiguo.springdps.dao.conf;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+import javax.sql.DataSource;
 
 /**
  * Created with IntelliJ IDEA Ultimate.
@@ -43,7 +44,7 @@ public class MysqlClusterConfig {
 
     @Bean("clusterTransactionManager")
     public DataSourceTransactionManager setTransactionManager(@Qualifier("clusterDruidDataSource") DataSource
-            dataSource) {
+                                                                      dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 }

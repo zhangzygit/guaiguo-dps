@@ -1,4 +1,4 @@
-package top.guaiguo.springdps.daoconf;
+package top.guaiguo.springdps.dao.conf;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
