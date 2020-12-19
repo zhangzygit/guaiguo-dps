@@ -1,3 +1,46 @@
 spring:
-  profiles:
-    active: devdb,ser,devweb
+    session:
+        store-type: none
+    main:
+        banner-mode: console
+    application:
+        name: guaiguo-dps-web
+    profiles:
+        active: dev
+    redis:
+        host: 127.0.0.1
+        port: 6379
+    thymeleaf:
+        prefix: classpath:/templates/
+        suffix: .html
+        mode: HTML5
+        encoding: UTF-8
+        cache: false
+        servlet:
+            content-type: text/html
+
+debug: true
+server:
+    port: 80
+    tomcat:
+        uri-encoding: UTF-8
+
+
+
+test-sprig-cloud-config-url:
+    211111111111111111
+
+
+---
+spring:
+    profiles: dev
+
+---
+spring:
+    profiles: test
+
+---
+spring:
+    profiles: online
+
+
